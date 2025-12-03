@@ -1,0 +1,395 @@
+/* ==========================================
+   CUSTOM PROPERTIES (CSS Variables)
+   ========================================== */
+
+:root {
+    /* Eco-friendly Color Palette */
+    --primary: #10b981;
+    --secondary: #059669;
+    --accent: #34d399;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #3b82f6;
+
+    /* Text Colors */
+    --text: #1f2937;
+    --text-light: #6b7280;
+
+    /* Background Colors */
+    --bg: #f3f4f6;
+    --white: #ffffff;
+
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 3rem;
+
+    /* Border Radius */
+    --radius: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+/* ==========================================
+   UTILITY CLASSES
+   ========================================== */
+
+.hidden {
+    display: none !important;
+}
+
+.section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.header {
+    background-color: var(--white);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.header__title {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.header__subtitle {
+    font-size: 1rem;
+    color: var(--text-light);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   MAIN CONTENT
+   ========================================== */
+
+.main {
+    padding: var(--spacing-lg) 0;
+}
+
+/* ==========================================
+   FORM STYLING
+   ========================================== */
+
+.calculator__form {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.calculator__field {
+    margin-bottom: var(--spacing-lg);
+}
+
+.calculator__label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text);
+}
+
+.calculator__input {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.calculator__input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.calculator__input:read-only {
+    background-color: var(--bg);
+    cursor: not-allowed;
+}
+
+.calculator__helper {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-sm);
+}
+
+/* ==========================================
+   CHECKBOX
+   ========================================== */
+
+.calculator__checkbox-group {
+    margin-bottom: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.calculator__checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.calculator__checkbox {
+    margin-right: var(--spacing-md);
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+/* ==========================================
+   FIELDSET & LEGEND
+   ========================================== */
+
+.calculator__fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: var(--spacing-lg);
+}
+
+.calculator__legend {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: var(--spacing-md);
+    padding: 0;
+}
+
+/* ==========================================
+   TRANSPORT MODE GRID
+   ========================================== */
+
+.calculator__transport-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .calculator__transport-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.calculator__transport-option {
+    position: relative;
+    cursor: pointer;
+}
+
+.calculator__radio {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.calculator__transport-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: var(--white);
+}
+
+.calculator__transport-option:hover .calculator__transport-content {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.calculator__radio:checked + .calculator__transport-content {
+    border-color: var(--primary);
+    border-width: 2px;
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+.calculator__transport-emoji {
+    display: block;
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.calculator__transport-text {
+    display: block;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   BUTTON
+   ========================================== */
+
+.calculator__button {
+    width: 100%;
+    padding: var(--spacing-md);
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: var(--spacing-lg);
+}
+
+.calculator__button:hover {
+    background-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.calculator__button:active {
+    transform: translateY(0);
+}
+
+.calculator__button:disabled {
+    background-color: var(--text-light);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* ==========================================
+   RESULTS SECTIONS
+   ========================================== */
+
+.results,
+.comparison,
+.carbon-credits {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.results__content,
+.comparison__content,
+.carbon-credits__content {
+    color: var(--text);
+}
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.footer {
+    background-color: var(--white);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    text-align: center;
+}
+
+.footer__credit {
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+/* ==========================================
+   SPINNER/LOADING ANIMATION
+   ========================================== */
+
+.spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f4f6;
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 767px) {
+    .header__title {
+        font-size: 1.5rem;
+    }
+
+    .calculator__form {
+        padding: var(--spacing-lg);
+    }
+
+    .calculator__transport-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .calculator__form {
+        max-width: 700px;
+    }
+
+    .results,
+    .comparison,
+    .carbon-credits {
+        max-width: 700px;
+    }
+}
