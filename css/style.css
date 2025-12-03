@@ -316,12 +316,322 @@ body {
     padding: var(--spacing-xl);
     max-width: 600px;
     margin: 0 auto var(--spacing-xl);
+    animation: fadeIn 0.5s ease-out;
 }
 
 .results__content,
 .comparison__content,
 .carbon-credits__content {
     color: var(--text);
+}
+
+/* ==========================================
+   RESULTS CARDS
+   ========================================== */
+
+.results__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+.results__card {
+    background-color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+}
+
+.results__card-title {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.results__card-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.results__card-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-sm);
+}
+
+.results__route-card {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.results__route {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.results__city {
+    color: var(--primary);
+}
+
+.results__arrow {
+    color: var(--text-light);
+    font-weight: 300;
+}
+
+.results__emission-card {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.results__mode-card {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.results__mode {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.results__mode-emoji {
+    font-size: 2.5rem;
+}
+
+.results__mode-label {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.results__distance-card {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.results__savings-card {
+    border-left: 4px solid var(--accent);
+    background-color: rgba(16, 185, 129, 0.05);
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* ==========================================
+   COMPARISON SECTION
+   ========================================== */
+
+.comparison__container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.comparison__item {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    border: 2px solid #e5e7eb;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    background-color: var(--white);
+}
+
+.comparison__item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.comparison__item--selected {
+    border-color: var(--primary);
+    background-color: rgba(16, 185, 129, 0.05);
+    box-shadow: var(--shadow-md);
+}
+
+.comparison__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.comparison__mode {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.comparison__icon {
+    font-size: 1.5rem;
+}
+
+.comparison__label {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.comparison__badge {
+    display: inline-block;
+    height: 24px;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.comparison__stats {
+    text-align: right;
+    margin-bottom: var(--spacing-md);
+}
+
+.comparison__emission {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text);
+}
+
+.comparison__percentage {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-sm);
+}
+
+.comparison__bar-container {
+    width: 100%;
+    height: 12px;
+    background-color: #e5e7eb;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.comparison__bar {
+    height: 100%;
+    border-radius: var(--radius);
+    transition: width 0.5s ease;
+}
+
+.comparison__tip {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-left: 4px solid var(--info);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+    border-radius: var(--radius);
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.comparison__tip-title {
+    font-weight: 700;
+    color: var(--info);
+    margin-bottom: var(--spacing-sm);
+}
+
+.comparison__tip-text {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   CARBON CREDITS SECTION
+   ========================================== */
+
+.carbon-credits__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.carbon-credits__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.carbon-credits__card {
+    background-color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.carbon-credits__card-title {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-md);
+}
+
+.carbon-credits__card-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.carbon-credits__card-helper {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-sm);
+}
+
+.carbon-credits__card-range {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-sm);
+}
+
+.carbon-credits__info {
+    border: 2px dashed var(--info);
+    background-color: rgba(59, 130, 246, 0.05);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius);
+    margin-bottom: var(--spacing-lg);
+}
+
+.carbon-credits__info-title {
+    font-weight: 700;
+    color: var(--info);
+    margin-bottom: var(--spacing-md);
+}
+
+.carbon-credits__info-text {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.carbon-credits__button {
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carbon-credits__button:hover {
+    background-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.carbon-credits__button:active {
+    transform: translateY(0);
 }
 
 /* ==========================================
@@ -365,6 +675,21 @@ body {
 }
 
 /* ==========================================
+   FADE-IN ANIMATION
+   ========================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
    RESPONSIVE DESIGN
    ========================================== */
 
@@ -379,6 +704,33 @@ body {
 
     .calculator__transport-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .results__card-value {
+        font-size: 1.25rem;
+    }
+
+    .carbon-credits__grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .carbon-credits__card-value {
+        font-size: 2rem;
+    }
+
+    .results,
+    .comparison,
+    .carbon-credits {
+        padding: var(--spacing-lg);
+    }
+
+    .results__card {
+        padding: var(--spacing-md);
+    }
+
+    .comparison__item {
+        padding: var(--spacing-md);
     }
 }
 
