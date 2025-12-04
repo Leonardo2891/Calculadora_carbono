@@ -79,17 +79,15 @@ const RoutesDB = {
 
     /**
      * Get all unique cities from the routes database
-     * @returns {Array} Sorted array of unique city names (without state abbreviation)
+     * @returns {Array} Sorted array of unique city names with state abbreviation
      */
     getAllCities: function() {
         const cities = new Set();
         
-        // Extract all cities from both origin and destination
+        // Extract all cities from both origin and destination (with state)
         this.routes.forEach(route => {
-            const originCity = route.origin.split(',')[0].trim();
-            const destinationCity = route.destination.split(',')[0].trim();
-            cities.add(originCity);
-            cities.add(destinationCity);
+            cities.add(route.origin);
+            cities.add(route.destination);
         });
         
         // Convert to array, sort alphabetically, and return
@@ -98,8 +96,8 @@ const RoutesDB = {
 
     /**
      * Find distance between two cities
-     * @param {string} origin - Origin city name
-     * @param {string} destination - Destination city name
+     * @param {string} origin - Origin city name (with or without state)
+     * @param {string} destination - Destination city name (with or without state)
      * @returns {number|null} Distance in kilometers if route found, null otherwise
      */
     findDistance: function(origin, destination) {
@@ -112,13 +110,27 @@ const RoutesDB = {
             const routeOrigin = route.origin.toLowerCase();
             const routeDestination = route.destination.toLowerCase();
 
-            // Check if route matches in either direction
+            // Check if route matches in either direction (exact match)
             if (routeOrigin === normalizedOrigin && routeDestination === normalizedDestination) {
                 return route.distanceKm;
             }
 
             // Check reverse direction
             if (routeOrigin === normalizedDestination && routeDestination === normalizedOrigin) {
+                return route.distanceKm;
+            }
+
+            // Also try matching by city name only (first part before comma)
+            const routeOriginCity = routeOrigin.split(',')[0].trim();
+            const routeDestinationCity = routeDestination.split(',')[0].trim();
+            const originCity = normalizedOrigin.split(',')[0].trim();
+            const destinationCity = normalizedDestination.split(',')[0].trim();
+
+            if (routeOriginCity === originCity && routeDestinationCity === destinationCity) {
+                return route.distanceKm;
+            }
+
+            if (routeOriginCity === destinationCity && routeDestinationCity === originCity) {
                 return route.distanceKm;
             }
         }
