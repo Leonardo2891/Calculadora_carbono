@@ -25,7 +25,7 @@ A Calculadora de Emissão de CO₂ é uma aplicação web moderna que permite ao
 
 ```
 calculadora-carbono/
-├── index.html              # Estrutura HTML semântica
+├── index.html             # Estrutura HTML semântica
 ├── css/
 │   └── style.css          # Estilos CSS modernos com variáveis
 ├── js/
